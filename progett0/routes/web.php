@@ -34,6 +34,8 @@ Route::middleware('admin')->group(function()
     Route::get('admin/products/{id}/edit','App\Http\Controllers\AdminProductController@edit')->name("admin.products.edit");
 
     Route::put('admin/products/{id}/update', 'App\Http\Controllers\AdminProductController@update')->name("admin.products.update");
+
+    Route::post('newsletter/send', 'App\Http\Controllers\NewsletterController@sendMail')->name('newsletter.send');
 });
 
 
