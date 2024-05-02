@@ -65,6 +65,10 @@
             prodotto disabilitato
         </label>
       </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="newsletter">
+        <label>Send email to the subscribers</label>
+      <div class = "row mt-3">
       
       <button type="submit" class="btn btn-primary mt-3">Modifica</button>
     </form>

@@ -28,32 +28,35 @@ class AdminProductController extends Controller
         ]);
     
 
-    $product = new Product();
-    
-    $product["name"] = $request->input('name');
-    $product["description"] = $request->input('description');
-    $product["price"] = $request->input('price');
-    $product["image"] = "noImage.jpg";
-
-    $product->save();
-
-    if($request->hasFile('image'))
-    {
-    
-        $imageName = $product->getName().".".$request->file('image')->extension();
+        $product = new Product();
         
-        //salva immagine nella cartella public
-        //passiamo nome file aggiornato e path dove prendere risorsa orginaria
-        Storage::disk('public')->put(
-            $imageName, 
-            file_get_contents($request->file('image')->getRealPath()));
-        
-        $product->setImage($imageName);
+        $product["name"] = $request->input('name');
+        $product["description"] = $request->input('description');
+        $product["price"] = $request->input('price');
+        $product["image"] = "noImage.jpg";
+
         $product->save();
+
+        if($request->hasFile('image'))
+        {
         
-    }
-   
-    return back();
+            $imageName = $product->getName().".".$request->file('image')->extension();
+            
+            //salva immagine nella cartella public
+            //passiamo nome file aggiornato e path dove prendere risorsa orginaria
+            Storage::disk('public')->put(
+                $imageName, 
+                file_get_contents($request->file('image')->getRealPath()));
+            
+            $product->setImage($imageName);
+            $product->save();
+            
+        }
+
+        if($request->has('newsletter'))    
+            return redirect()->route("newsletter.mail.product")->with("product", $product);
+        else
+            return back();
     }
 
     public function delete($id){
@@ -82,31 +85,32 @@ class AdminProductController extends Controller
         ]);
     
 
-    $product = Product::findOrFail($id);
-    
-    $product->setName($request->input('name'));
-    $product->setDescription($request->input('description'));
-    $product->setPrice($request->input('price'));
-    $product->setAvailability($request->input('disabilita',1)); //se è checkato prende valore di disabilita, altrimenti 1
-    $product->save();
+        $product = Product::findOrFail($id);
+        
+        $product->setName($request->input('name'));
+        $product->setDescription($request->input('description'));
+        $product->setPrice($request->input('price'));
+        $product->setAvailability($request->input('disabilita',1)); //se è checkato prende valore di disabilita, altrimenti 1
+        $product->save();
 
-    if($request->hasFile('image'))
-    {
-    
-        $imageName = $product->getName().".".$request->file('image')->extension();
+        if($request->hasFile('image'))
+        {
         
-        //salva immagine nella cartella public
-        //passiamo nome file aggiornato e path dove prendere risorsa orginaria
-        Storage::disk('public')->put(
-            $imageName, 
-            file_get_contents($request->file('image')->getRealPath()));
-        
-        $product->setImage($imageName);
-        
-        
+            $imageName = $product->getName().".".$request->file('image')->extension();
+            
+            //salva immagine nella cartella public
+            //passiamo nome file aggiornato e path dove prendere risorsa orginaria
+            Storage::disk('public')->put(
+                $imageName, 
+                file_get_contents($request->file('image')->getRealPath()));
+            
+            $product->setImage($imageName);
+        }
+
+        $product->save();
+
+        if($request->has('newsletter')) NewsletterController::productMail($product);
+
+        return redirect()->route('admin.products.indexProduct');
     }
-
-    $product->save();
-
-    return redirect()->route('admin.products.indexProduct');}
 }

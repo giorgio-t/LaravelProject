@@ -11,7 +11,7 @@
 
         <div class = "card-body">
             
-            <form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('newsletter.mail.send') }}" enctype="multipart/form-data">
                 
                 @csrf
                 <div class="row">
