@@ -39,7 +39,6 @@ Route::middleware('admin')->group(function()
 
     Route::post('newsletter/send', 'App\Http\Controllers\NewsletterController@sendMail')->name('newsletter.mail.send');
 
-    Route::post('newsletter/send', 'App\Http\Controllers\NewsletterController@productMail')->name('newsletter.mail.sendProduct');
 });
 
 
