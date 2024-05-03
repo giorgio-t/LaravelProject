@@ -53,10 +53,9 @@ class AdminProductController extends Controller
             
         }
 
-        if($request->has('newsletter'))    
-            return redirect()->route("newsletter.mail.product")->with("product", $product);
-        else
-            return back();
+        if($request->has('newsletter')) NewsletterController::productMail($product);
+   
+        return back();
     }
 
     public function delete($id){

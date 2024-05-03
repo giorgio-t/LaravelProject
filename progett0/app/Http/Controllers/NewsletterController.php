@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\ProductMail;
 use App\Mail\BaseMail;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 use Auth;
 
 class NewsletterController extends Controller {
@@ -28,7 +30,7 @@ class NewsletterController extends Controller {
 
     public function sendMail(Request $request) {
         $subject = $request->subject;
-        $body = $request->mailBody;
+        $body = $request->body;
 
         $subscribers = User::findMany(DB::table('newsletter')
             ->get()
@@ -45,7 +47,7 @@ class NewsletterController extends Controller {
         return back();
     }
     
-    public function productMail(Product $product) {
+    public static function productMail(Product $product) {
         $subscribers = User::findMany(DB::table('newsletter')
             ->get()
             ->map(function($entry) {
