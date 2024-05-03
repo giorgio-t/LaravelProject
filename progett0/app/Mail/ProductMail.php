@@ -9,21 +9,20 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class TestMail extends Mailable
+class ProductMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject, $body;
+    public $product;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($subject, $body)
+    public function __construct($product)
     {
-        $this->subject = $subject;
-        $this->body = $body;
+        $this->product = $product;
     }
 
     /**
@@ -34,7 +33,7 @@ class TestMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: $this->subject,
+            subject: $this->product->getName(),
         );
     }
 
@@ -46,7 +45,7 @@ class TestMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'mail.mail',
+            view: 'mail.product',
         );
     }
 
