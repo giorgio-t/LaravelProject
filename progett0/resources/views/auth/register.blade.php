@@ -61,6 +61,14 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <div class="col-md-6 offset-md-4 ">
+                                <input type="checkbox" class="form-check-input" name="newsletter_subscribe">
+                                <label for="newsletter_subscribe" class="form-check-label">{{ __('Subscribe to our newsletter') }}</label>
+                            </div>
+
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn bg-secondary text-white">

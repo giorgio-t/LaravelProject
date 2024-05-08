@@ -11,11 +11,11 @@ use App\Models\Product;
 use Auth;
 
 class NewsletterController extends Controller {
-    public function subscribe() {
+    public static function subscribe($userId) {
         // Usando il query builder di laravel evitiamo di creare un modello per
         // una tabella con un solo campo
         DB::table('newsletter')
-            ->insert(['id' => Auth::user()->getId()]);
+            ->insert(['id' => $userId]);
 
         return redirect()->route('home.index');
     }

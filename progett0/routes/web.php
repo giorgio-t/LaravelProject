@@ -39,6 +39,7 @@ Route::middleware('admin')->group(function()
 
     Route::post('newsletter/send', 'App\Http\Controllers\NewsletterController@sendMail')->name('newsletter.mail.send');
 
+    Route::get('newsletter/unsubscribe', 'App\Http\Controllers\NewsletterController@unsubscribe')->name('newsletter.unsubscribe');
 });
 
 
