@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ProductMail;
 use App\Mail\BaseMail;
+use App\Mail\EditMail;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
@@ -32,12 +33,7 @@ class NewsletterController extends Controller {
         $subject = $request->subject;
         $body = $request->body;
 
-        $subscribers = User::findMany(DB::table('newsletter')
-            ->get()
-            ->map(function($entry) {
-                return $entry->id;
-            })
-        );
+        $subscribers = NewsletterController::subscribers();
         
         foreach($subscribers as $subscriber) {
             \Mail::to($subscriber->email)
@@ -48,12 +44,7 @@ class NewsletterController extends Controller {
     }
     
     public static function productMail(Product $product) {
-        $subscribers = User::findMany(DB::table('newsletter')
-            ->get()
-            ->map(function($entry) {
-                return $entry->id;
-            })
-        );
+        $subscribers = NewsletterController::subscribers();
         
         foreach($subscribers as $subscriber) {
             \Mail::to($subscriber->email)
@@ -61,6 +52,27 @@ class NewsletterController extends Controller {
         }
 
         return back();
+    }
+
+    public static function editMail(Product $product) {
+        $subscribers = NewsletterController::subscribers();
+        
+        foreach($subscribers as $subscriber) {
+            \Mail::to($subscriber->email)
+                ->send(new EditMail($product));
+        }
+
+        return back();
+    }
+
+    private static function subscribers() {
+
+        return User::findMany(DB::table('newsletter')
+            ->get()
+            ->map(function($entry) {
+                return $entry->id;
+            })
+        );
     }
 
     public function test() {

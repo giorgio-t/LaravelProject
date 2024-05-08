@@ -15,9 +15,9 @@ class AdminProductController extends Controller
         $viewData['title'] = "Lista prodotti disponibili";
         $viewData['products'] = Product::all();
 
-        return view('admin.products.indexProduct')->with("viewData",$viewData);
-    
+        return view('admin.products.indexProduct')->with("viewData",$viewData);  
     }
+
     public function store(Request $request){
 
         $request -> validate([
@@ -108,7 +108,7 @@ class AdminProductController extends Controller
 
         $product->save();
 
-        if($request->has('newsletter')) NewsletterController::productMail($product);
+        if($request->has('newsletter')) NewsletterController::editMail($product);
 
         return redirect()->route('admin.products.indexProduct');
     }

@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ProductMail extends Mailable
+class EditMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,7 +33,7 @@ class ProductMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: "We have a new update for you! Added " . $this->product->getName() . "!",
+            subject: "We have a new update for you! Modified " . $this->product->getName() . "!",
         );
     }
 
@@ -45,7 +45,7 @@ class ProductMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'mail.product',
+            view: 'mail.edit',
         );
     }
 
