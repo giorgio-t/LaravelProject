@@ -54,7 +54,7 @@
               </p>
 
               <p style="margin-bottom: 0; font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #ffffff;">
-                <a target="_blank" style="text-decoration: underline; color: #ffffff;" href="localhost:8080">
+                <a target="{{route('home.index')}}}" style="text-decoration: underline; color: #ffffff;" href="localhost:8080">
                   www.ourplantseshop.com
                 </a>
               </p>
@@ -70,7 +70,7 @@
             <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px;" width="596">
               
               <p style="font-size: 12px; line-height: 12px; font-family: 'Helvetica', Arial, sans-serif; font-weight: normal; text-decoration: none; color: #000000;">
-                Not wanting to receive these emails?
+                Do you wish not to receive such newsletters anymore?
               </p>
 
               <p style="font-size: 12px; line-height: 12px; font-family: 'Helvetica', Arial, sans-serif; font-weight: normal; text-decoration: none; color: #000000;">

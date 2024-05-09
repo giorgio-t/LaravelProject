@@ -54,7 +54,7 @@
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" name="newsletter">
-        <label>Send email to the subscribers</label>
+        <label>Notify subscribers</label>
       <div class = "row mt-3">
         <div class = "col text-end">
           <button type="submit" class="btn btn-primary">Submit</button>
