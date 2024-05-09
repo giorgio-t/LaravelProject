@@ -17,7 +17,7 @@
           <tr>
             <td style="width: 596px; vertical-align: top; padding-left: 0; padding-right: 0; padding-top: 15px; padding-bottom: 15px;" width="596">
 
-              <img style="text-align: center; color: #ffffff;" alt="Logo" src="https://www.plantshopgr.com/cdn/shop/files/primary-plant-snake_1800x.png?v=1613533273" align="center" width="180" height="85">
+              <img style="text-align: center; color: #ffffff;" alt="Logo" src="https://www.plantshopgr.com/cdn/shop/files/primary-plant-snake_1800x.png?v=1613533273" align="center" width="180" height="49">
 
             </td>
           </tr>
