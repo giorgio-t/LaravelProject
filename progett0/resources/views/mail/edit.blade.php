@@ -6,6 +6,6 @@
 <p style="font-size: 15px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">Product description: {{ $product->getDescription() }}</p>              
 <p style="font-size: 15px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">Price: {{ $product->getPrice() }}</p>                        
 
-<img src="{{ asset('/storage/' . $product->getImage()) }}"></img>
+<p><img src="{{ $message->embed('./storage/' . $product->getImage()) }}" style="max-width: 100%;"></p>
 
 @endsection

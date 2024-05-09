@@ -50,7 +50,6 @@ class AdminProductController extends Controller
             
             $product->setImage($imageName);
             $product->save();
-            
         }
 
         if($request->has('newsletter')) NewsletterController::productMail($product);
