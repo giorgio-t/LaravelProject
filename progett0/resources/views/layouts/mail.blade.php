@@ -54,7 +54,7 @@
               </p>
 
               <p style="margin-bottom: 0; font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #ffffff;">
-                <a target="{{route('home.index')}}}" style="text-decoration: underline; color: #ffffff;" href="localhost:8080">
+                <a style="text-decoration: underline; color: #ffffff;" href="{{route('home.index')}}">
                   www.ourplantseshop.com
                 </a>
               </p>
