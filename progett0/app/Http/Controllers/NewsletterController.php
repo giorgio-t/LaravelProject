@@ -22,7 +22,7 @@ class NewsletterController extends Controller {
     }
     
     public function unsubscribe() {
-        DB:table('newsletter')
+        DB::table('newsletter')
             ->where('id', Auth::user()->getId())
             ->delete();
 

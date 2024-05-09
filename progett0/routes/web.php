@@ -38,8 +38,6 @@ Route::middleware('admin')->group(function()
     Route::put('admin/products/{id}/update', 'App\Http\Controllers\AdminProductController@update')->name("admin.products.update");
 
     Route::post('newsletter/send', 'App\Http\Controllers\NewsletterController@sendMail')->name('newsletter.mail.send');
-
-    Route::get('newsletter/unsubscribe', 'App\Http\Controllers\NewsletterController@unsubscribe')->name('newsletter.unsubscribe');
 });
 
 
@@ -60,5 +58,6 @@ Route::middleware('auth')->group(function(){
     Route::get('orders','App\Http\Controllers\MyAccountController@orders')->name("myaccount.orders");
     Route::get('balance','App\Http\Controllers\MyAccountController@balance')->name("myaccount.balance");
     Route::post('/updateBalance', 'App\Http\Controllers\MyAccountController@updateBalance')->name("myaccount.updateBalance");
+    Route::get('newsletter/unsubscribe', 'App\Http\Controllers\NewsletterController@unsubscribe')->name('newsletter.unsubscribe');
 });
 
